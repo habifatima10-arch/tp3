@@ -1,113 +1,54 @@
-[09/03/2026 01:08] ٱية حمدي ❤: function addCourse(){
+<!DOCTYPE html>
+<html lang="en">
 
-var row = document.createElement('div');
+<head>
+<meta charset="UTF-8">
+<title>GPA Calculator</title>
 
-row.className = 'course-row';
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 
-row.innerHTML =
-'<label>Course:</label>' +
-'<input type="text" name="course[]" placeholder="e.g. Mathematics" required>' +
+</head>
 
-'<label>Credits:</label>' +
-'<input type="number" name="credits[]" placeholder="e.g. 3" min="1" required>' +
+<body>
 
-'<label>Grade:</label>' +
+<h1>GPA Calculator</h1>
 
-'<select name="grade[]">' +
-'<option value="4.0">A</option>' +
-'<option value="3.0">B</option>' +
-'<option value="2.0">C</option>' +
-'<option value="1.0">D</option>' +
-'<option value="0.0">F</option>' +
-'</select>' +
+<form action="calculate.php" method="post" onsubmit="return validateForm();">
 
-'<button type="button" onclick="this.parentNode.remove()">Remove</button>';
+<div id="courses">
 
-document.getElementById('courses').appendChild(row);
+<div class="course-row">
 
-}
+<label>Course:</label>
+<input type="text" name="course[]" placeholder="e.g. Mathematics" required>
 
+<label>Credits:</label>
+<input type="number" name="credits[]" placeholder="e.g. 3" min="1" required>
 
-function validateForm(){
+<label>Grade:</label>
 
-var courses = document.querySelectorAll('[name="course[]"]');
-var credits = document.querySelectorAll('[name="credits[]"]');
+<select name="grade[]">
+<option value="4.0">A</option>
+<option value="3.0">B</option>
+<option value="2.0">C</option>
+<option value="1.0">D</option>
+<option value="0.0">F</option>
+</select>
 
-for(var i=0;i<courses.length;i++){
+</div>
 
-if(courses[i].value === ""){
+</div>
 
-alert("All course name fields are required.");
-return false;
+<button type="button" onclick="addCourse()">
++ Add Course
+</button>
 
-}
+<br><br>
 
-}
+<input type="submit" value="Calculate GPA">
 
-for(var j=0;j<credits.length;j++){
+</form>
 
-if(isNaN(credits[j].value) || credits[j].value <= 0){
-
-alert("Credit hours must be positive numbers.");
-return false;
-
-}
-
-}
-
-return true;
-
-}
-[09/03/2026 01:11] ٱية حمدي ❤: body {
-
-font-family: Arial, sans-serif;
-margin: 20px;
-background-color: #e9ecef;
-
-}
-
-h1 {
-
-color: #007BFF;
-
-}
-
-.course-row {
-
-display: flex;
-gap: 10px;
-align-items: center;
-margin-bottom: 10px;
-
-}
-
-.course-row input,
-.course-row select {
-
-padding: 6px;
-border: 1px solid #ccc;
-border-radius: 4px;
-
-}
-
-table {
-
-border-collapse: collapse;
-margin-top: 16px;
-
-}
-
-table th, table td {
-
-border: 1px solid #ccc;
-padding: 8px 14px;
-text-align: center;
-
-}
-
-table th {
-
-background-color: #007BFF;
-color: white;
-
-}
+</body>
+</html>
